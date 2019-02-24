@@ -1,0 +1,34 @@
+{
+  "name": "sercomm-rv6699",
+  "version": "0.8.0",
+  "description": "API for MGTS router Sercomm RV6699",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "coverage": "nyc mocha && nyc report --reporter=text-lcov > coverage.lcov"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/timmson/sercomm-rv6699.git"
+  },
+  "keywords": [
+    "mgts",
+    "sercomm",
+    "rv6699"
+  ],
+  "author": "timmson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/timmson/sercomm-rv6699/issues"
+  },
+  "homepage": "https://github.com/timmson/sercomm-rv6699#readme",
+  "devDependencies": {
+    "chai": "4.2.0",
+    "mocha": "6.0.1"
+  },
+  "dependencies": {
+    "cheerio": "1.0.0-rc.2",
+    "iconv": "2.3.2",
+    "request-promise": "4.2.4"
+  }
+}
