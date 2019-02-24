@@ -1,5 +1,4 @@
 const r = require("request-promise");
-const c = require("cheerio");
 
 let that = null;
 
@@ -39,7 +38,6 @@ SerCommRv6699Api.prototype.getDeviceList = () => {
                 let lines = body.split("\n");
                 eval(lines[202]);
                 let list = device_array || [];
-                //console.log(list);
                 resolve(list);
             },
             err => reject(err)

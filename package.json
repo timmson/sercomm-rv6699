@@ -1,6 +1,6 @@
 {
   "name": "sercomm-rv6699",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "API for MGTS router Sercomm RV6699",
   "main": "index.js",
   "scripts": {
@@ -23,14 +23,12 @@
   },
   "homepage": "https://github.com/timmson/sercomm-rv6699#readme",
   "devDependencies": {
+    "axios": "0.18.0",
     "chai": "4.2.0",
     "mocha": "6.0.1",
     "nock": "10.0.6"
   },
   "dependencies": {
-    "axios": "0.18.0",
-    "cheerio": "1.0.0-rc.2",
-    "iconv": "2.3.2",
     "request": "2.88.0",
     "request-promise": "4.2.4"
   }
