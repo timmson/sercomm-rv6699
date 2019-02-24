@@ -1,0 +1,235 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function show_connected_devices()
+{
+    var device_array = new Array(new device("1C:1B:0D:C6:BA:A7","192.168.0.3","pc1","Y","13s Ago","5h:30m:39s","LAN4","1.0Gbps"),new device("DC:EE:06:1A:FB:12","192.168.0.6","mobile","Y","13s Ago","2h:39m:55s","wimax","54.0Mbps"),new device("A0:57:E3:52:07:5B","192.168.0.7","tablet","Y","17s Ago","5h:16m:49s","wimax5","54.0Mbps"),new device("4C:66:41:0A:09:2D","192.168.0.8","tv","Y","13s Ago","5h:2m:10s","wimax","54.0Mbps"),new device("88:B1:11:C3:EC:EA","192.168.0.9","laptop","N","1h:17m:38s Ago","0","wimax5","--"));
+    var st = [["Y", ""], ["N", ""]];
+    var tmp = "";
+    var i, j;
+    
+    st[0][1] = getErrorMsgByVar("Connected");
+    st[1][1] = getErrorMsgByVar("Disconnected");
+    for (j = 0; j < st.length; j++)
+    {
+        for(i = 0; i < device_array.length; i++)
+     	{
+     	    tmp += '<tr>';
+     	    if (device_array[i].alive == st[j][0])
+            {
+                link_type = device_array[i].link_type.substr(0,3);
+                if (link_type == "LAN" || device_array[i].link_type == "--")
+     	            tmp += '<td width="5%" align="right"><img src="images/ether.png" border=0 width="70%"></td>';
+                else
+                    tmp += '<td width="5%" align="right"><img src="images/wlan.gif" border=0 width="70%"></td>';
+     	        tmp += '<td width="15%" align="left">' + device_array[i].link_type + '</td>';
+     	        tmp += '<td width="20%">' + device_array[i].hostname + '</td>';
+     	        tmp += '<td width="17%">' + device_array[i].ip + '</td>';
+		 tmp += '<td width="23%">' + device_array[i].mac + '</td>';
+     	        if (st[j][0] == "N")
+     	            tmp += '<td width="20%">' + st[j][1] + '(' + device_array[i].last_see_time + ')</td>';
+     	        else
+     	            tmp += '<td width="20%">' + st[j][1] + '</td>';
+     	    }
+        	tmp += '</tr>';
+        }
+    }
+    dw(tmp);
+}
