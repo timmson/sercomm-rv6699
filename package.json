@@ -1,6 +1,6 @@
 {
   "name": "sercomm-rv6699",
-  "version": "0.8.1",
+  "version": "0.8.2",
   "description": "API for MGTS router Sercomm RV6699",
   "main": "index.js",
   "scripts": {
@@ -29,7 +29,6 @@
     "nock": "10.0.6"
   },
   "dependencies": {
-    "request": "2.88.0",
-    "request-promise": "4.2.4"
+    "request": "2.88.0"
   }
 }

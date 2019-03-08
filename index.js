@@ -1,4 +1,4 @@
-const r = require("request-promise");
+const r = require("request");
 
 let that = null;
 
@@ -21,6 +21,7 @@ function SerCommRv6699Api(options) {
         this.password = options.password;
     }
     that = this;
+    that.errCount = 0;
 }
 
 SerCommRv6699Api.prototype.getDeviceList = () => {
@@ -30,17 +31,20 @@ SerCommRv6699Api.prototype.getDeviceList = () => {
                 uri: that.url,
                 auth: {
                     user: that.login,
-                    pass: that.password
+                    pass: that.password,
+                    sendImmediately: false
+                }
+            }, (err, response, body) => {
+                if (err) {
+                    console.log(err);
+                    reject(err);
+                } else {
+                    let lines = body.split("\n");
+                    eval(lines[202]);
+                    let list = device_array || [];
+                    resolve(list);
                 }
             }
-        ).then(
-            body => {
-                let lines = body.split("\n");
-                eval(lines[202]);
-                let list = device_array || [];
-                resolve(list);
-            },
-            err => reject(err)
         );
     });
 };
