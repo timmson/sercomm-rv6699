@@ -1,4 +1,3 @@
-const expect = require("chai").expect;
 const nock = require("nock");
 const fs = require("fs");
 const path = require("path");
@@ -23,7 +22,7 @@ describe("SerCommRv6699Api", () => {
 
 		it("Should return 5 devices", async () => {
 			let devices = await api.getDeviceList();
-			expect(devices).to.have.lengthOf(5);
+			expect(devices).toHaveLength(5);
 		});
 	});
 

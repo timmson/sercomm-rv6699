@@ -9,7 +9,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [10.x]
+        node-version: [12.x]
 
     steps:
     - uses: actions/checkout@v1
@@ -17,14 +17,12 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: Install
-      run: |
-        npm i mocha nyc codecov  -g
-        npm i
+
     - name: Lint and coverage
       run: |
         npm run lint
-        npm run coverage && codecov
+        npm i
+        npm run coverage && npx codecov
       env:
         CI: true
         CODECOV_TOKEN: cf02654f-28f8-491c-b203-a67e8f9a90df
