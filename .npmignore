@@ -6,7 +6,7 @@ node_modules/
 
 #Test & Coverage
 coverage/
-jest.config.js
+jest.config.json
 test/
 
 #Git
@@ -14,5 +14,5 @@ test/
 .gitignore
 
 #Other
-.eslintrc.js
+.eslintrc.json
 .github/

@@ -14,15 +14,15 @@ npm i sercomm-rv6699
 ## Examples
 
 ```js
-const SerCommRv6699Api = ("sercomm-rv6699");
+const SerCommRv6699Api = require("sercomm-rv6699")
 
 const options = {
-    url: "http://your-route-ip",
+    url: "http://your-router-ip",
     login: "login",
     password: "password"
 };
 
-let api = new SerCommRv6699Api(options);
+let api = new SerCommRv6699Api(options)
 
-api.getDeviceList().then(console.log, console.error);
+api.getDeviceList().then((result) => console.log(result)).catch((error) => console.error(error))
 ```
