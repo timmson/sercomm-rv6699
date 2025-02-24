@@ -20,8 +20,8 @@ jobs:
 
     - name: Lint and coverage
       run: |
-        npm run lint
         npm i
+        npm run lint
         npm run coverage && npx codecov
       env:
         CI: true
