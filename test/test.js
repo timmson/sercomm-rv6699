@@ -1,7 +1,7 @@
 const nock = require("nock")
 const fs = require("fs")
 const path = require("path")
-const SerCommRv6699Api = require("../index")
+const SerCommRv6699API = require("../index")
 
 
 const options = {
@@ -10,9 +10,9 @@ const options = {
 	password: "password"
 }
 
-describe("SerCommRv6699Api", () => {
+describe("SerCommRv6699API", () => {
 
-	let api = new SerCommRv6699Api(options)
+	const api = SerCommRv6699API(options)
 
 	describe("#getDeviceList", () => {
 
@@ -21,7 +21,8 @@ describe("SerCommRv6699Api", () => {
 		})
 
 		it("Should return 5 devices", async () => {
-			let devices = await api.getDeviceList()
+			const devices = await api.getDeviceList()
+
 			expect(devices).toHaveLength(5)
 		})
 	})

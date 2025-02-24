@@ -1,39 +1,26 @@
 const axios = require("axios")
 
-let that = null
+const SerCommRv6699API = (options) => {
+	const url = options.url
+	const login = options.login
+	const password = options.password
 
-function SerCommRv6699Api(options) {
-	if (options) {
-		this.url = options.url
-		this.login = options.login
-		this.password = options.password
-	}
-	that = this
-	that.errCount = 0
-}
-
-SerCommRv6699Api.prototype.getDeviceList = () => {
-	return new Promise((resolve, reject) => {
-		axios.get(that.url, {
-			auth: {
-				username: that.login,
-				password: that.password
-			}
-		}).then((response, error) => {
-			if (error) {
-				console.log(error)
-				reject(error)
-			} else {
-				let src = response.data.split("\n")
+	return {
+		getDeviceList: async () => {
+			try {
+				const config = {auth: {username: login, password: password}}
+				const response = await axios.get(url, config)
+				const src = response.data.split("\n")
 					.filter((l, i) => ((i >= 188 && i <= 199) || i === 202))
 					.map((l, i, a) => (i === a.length - 1) ? l.split("=")[1] : l)
 					.join("\n")
-				let deviceArray = eval(src)
-				resolve(deviceArray)
+				return eval(src)
+			} catch (e) {
+				console.log(e)
+				throw e
 			}
-		})
-
-	})
+		}
+	}
 }
 
-module.exports = SerCommRv6699Api
+module.exports = SerCommRv6699API
